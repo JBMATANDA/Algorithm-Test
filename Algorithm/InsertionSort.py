@@ -1,12 +1,10 @@
 import time as time
 
-count = 0;
+count = 0
 def sort(a_list):
-    start = time.time()
     insertion_sort(a_list)
-    end = time.time()
-    tid_i_sekunder = end - start
-    print("Det tog %f sekunder" % tid_i_sekunder)
+    return count
+
 def insertion_sort(a_list):
         global count
 
