@@ -1,12 +1,11 @@
 import time as time
 
-count = 0
 def sort(a_list):
-    bubble_sort(a_list)
+    count = bubble_sort(a_list)
     return count
 
 def bubble_sort(a_list):
-    global count
+    count = 0
     for pass_num in range(len(a_list) - 1, 0, -1):
         for i in range(pass_num):
             count = count + 1
@@ -15,4 +14,4 @@ def bubble_sort(a_list):
                 temp = a_list[i]
                 a_list[i] = a_list[i + 1]
                 a_list[i + 1] = temp
-
+    return count
