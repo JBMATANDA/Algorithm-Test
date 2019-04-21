@@ -3,11 +3,9 @@ from Experiment import Experiment_Runner
 from visualization import visualizer
 
 
-
-
 if __name__ == "__main__":
     config = {}
-    config['runs'] = 5
+    config['runs'] = 100
     config['stats'] = ['ops', 'time']
     config['algorithms'] = ['Bubble Sort', 'Insertion Sort', 'Quick Sort']
     config['data'] = [data_generator.generate_random_data(1),
