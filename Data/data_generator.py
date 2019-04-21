@@ -25,14 +25,18 @@ def generate_reversed_sorted_data(n):
     return numList
 
 def generate_almost_sorted_data(n):
+
+
     numList = []
     for i in range(n):
         numList.append(random.randrange(1, 101, 1))
         numList.sort()
 
+    if n == 1:
+        return numList
 
     for i in range(2):
-        temp = numList[i]
+        temp = numList[i - 1]
         numList[i] = numList[random.randrange(0, n)]
         numList[random.randrange(0, n)] = temp
 
