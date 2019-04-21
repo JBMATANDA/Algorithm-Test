@@ -10,7 +10,7 @@ config = {
 }
 
 result = Experiment_Runner.run(config)
-seconds, ops = Experiment_Runner.run_algorithm(config, data_generator.generate_random_data(100), algorithm=BubbleSort)
+seconds, ops = Experiment_Runner.run_algorithm(config, data_generator.generate_random_data(100), algorithm=algorithm)
 
 print(seconds)
 print(ops)

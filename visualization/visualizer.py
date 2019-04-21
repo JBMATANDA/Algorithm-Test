@@ -1,14 +1,11 @@
 import matplotlib
 import math
-
-
-
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
+matplotlib.use('TkAgg')
 
 
-def plot_result(results, title, filename=None):
+def plot_result(results, title):
     plt.suptitle(title)
     plt.ylabel('Ops (#)')
     plt.xlabel('Size (n)')
@@ -26,7 +23,6 @@ def plot_result(results, title, filename=None):
         bubble_opsy.append(stat['ops'])
         bubble_timey.append(stat['time'])
 
-
     insertion_opsx = []
     insertion_opsy = []
     insertion_timey = []
@@ -35,7 +31,6 @@ def plot_result(results, title, filename=None):
         insertion_opsx.append(stat['n'])
         insertion_opsy.append(stat['ops'])
         insertion_timey.append(stat['time'])
-
 
     quick_opsx = []
     quick_opsy = []
@@ -67,16 +62,18 @@ def plot_result(results, title, filename=None):
 
     plt.show()
 
+
 def logarithmic(n):
     return [math.log2(i) for i in n]
 
+
 def constant(n):
-    return [1 for i in n]
+    return [1 for _ in n]
+
 
 def quadratic(n):
     return [float(i) ** 2 for i in n]
 
+
 def linear(n):
     return n
-
-

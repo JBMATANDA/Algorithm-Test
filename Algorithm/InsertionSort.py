@@ -1,10 +1,11 @@
-import time as time
+
 
 def sort(a_list):
     global count
     count = 0
     insertion_sort(a_list)
     return count
+
 
 def insertion_sort(a_list):
     for index in range(1, len(a_list)):
@@ -17,6 +18,7 @@ def insertion_sort(a_list):
             position = position - 1
 
         a_list[position] = current_value
+
 
 def increment_count():
     global count

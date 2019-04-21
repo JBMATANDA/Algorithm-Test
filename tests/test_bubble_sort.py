@@ -6,4 +6,4 @@ print(data)
 n_ops = BubbleSort.sort(data)
 
 print(data)
-print("n_ops: %d" % (n_ops))
+print("n_ops: %d" % n_ops)

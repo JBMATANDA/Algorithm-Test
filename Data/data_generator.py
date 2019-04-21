@@ -2,42 +2,44 @@ import random
 
 
 def generate_random_data(n):
-    numList = []
+    num_list = []
     for i in range(n):
-        numList.append(random.randrange(1, 101, 1))
+        num_list.append(random.randrange(1, 101, 1))
 
-    return numList
+    return num_list
+
 
 def generate_sorted_data(n):
-    numList = []
+    num_list = []
     for i in range(n):
-        numList.append(random.randrange(1, 101))
+        num_list.append(random.randrange(1, 101))
 
-    numList.sort()
-    return numList
+    num_list.sort()
+    return num_list
+
 
 def generate_reversed_sorted_data(n):
-    numList = []
+    num_list = []
     for i in range(n):
-        numList.append(random.randrange(1, 101, 1))
+        num_list.append(random.randrange(1, 101, 1))
 
-    numList.sort(reverse=True)
-    return numList
+    num_list.sort(reverse=True)
+    return num_list
+
 
 def generate_almost_sorted_data(n):
 
-
-    numList = []
+    num_list = []
     for i in range(n):
-        numList.append(random.randrange(1, 101, 1))
-        numList.sort()
+        num_list.append(random.randrange(1, 101, 1))
+        num_list.sort()
 
     if n == 1:
-        return numList
+        return num_list
 
     for i in range(2):
-        temp = numList[i - 1]
-        numList[i] = numList[random.randrange(0, n)]
-        numList[random.randrange(0, n)] = temp
+        temp = num_list[i - 1]
+        num_list[i] = num_list[random.randrange(0, n)]
+        num_list[random.randrange(0, n)] = temp
 
-    return numList
+    return num_list

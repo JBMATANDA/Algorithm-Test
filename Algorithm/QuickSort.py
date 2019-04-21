@@ -1,4 +1,4 @@
-import time as time
+
 
 def sort(a_list):
     global count
@@ -6,9 +6,9 @@ def sort(a_list):
     quick_sort(a_list)
     return count
 
+
 def quick_sort(a_list):
     return quick_sort_helper(a_list, 0, len(a_list) - 1)
-
 
 
 def quick_sort_helper(a_list, first, last):
@@ -26,12 +26,10 @@ def partition(a_list, first, last):
     right_mark = last
     done = False
     while not done:
-        while increment_count() and left_mark <= right_mark and \
-                      a_list[left_mark] <= pivot_value:
+        while increment_count() and left_mark <= right_mark and a_list[left_mark] <= pivot_value:
             left_mark = left_mark + 1
 
-        while increment_count() and a_list[right_mark] >= pivot_value and \
-            right_mark >= left_mark:
+        while increment_count() and a_list[right_mark] >= pivot_value and right_mark >= left_mark:
             right_mark = right_mark - 1
         if right_mark < left_mark:
             done = True
@@ -43,12 +41,10 @@ def partition(a_list, first, last):
         a_list[first] = a_list[right_mark]
         a_list[right_mark] = temp
 
-
         return right_mark
+
 
 def increment_count():
     global count
     count += 1
     return True
-
-
