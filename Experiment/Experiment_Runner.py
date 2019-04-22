@@ -5,51 +5,28 @@ import time
 
 
 def run(config):
-    result = {}
+    results = determine_algorithm(config)
 
-    # Runs every Algorithm in config
-    for i in config['algorithms']:
-        # Bubble Sort
-        if i == 'Bubble Sort':
-            for j in config['data']:
-                for _ in (range(config['runs'])):
-                    count, seconds = run_algorithm(config, j, BubbleSort)
-                result_list = save_results(config, j, count, seconds)
-            # Saves result in map
-            result['Bubble Sort'] = result_list
-        # Insertion Sort
-        if i == 'Insertion Sort':
-            for j in config['data']:
-                for _ in (range(config['runs'])):
-                    count, seconds = run_algorithm(config, j, InsertionSort)
-                result_list = save_results(config, j, count, seconds)
-            # Saves result in map
-            result['Insertion Sort'] = result_list
-        # Quick Sort
-        if i == 'Quick Sort':
-            for j in config['data']:
-                count, seconds = run_algorithm(config, j, QuickSort)
-            result_list = save_results(config, j, count, seconds)
-            # Saves result in map
-            result['Quick Sort'] = result_list
-
-    return result
+    return results
 
 
-def run_algorithm(config, data, algorithm):
-    ops = 0
-    seconds = 0
-    for runs in range(config['runs']):
-        start = time.time()
-        ops += algorithm.sort(data)
-        end = time.time()
-        seconds += end - start
-
-    return seconds / float(config['runs']), ops / float(config['runs'])
-
-
-def save_results(config, data, count, seconds):
+def run_algorithm(config, algorithm):
+    n = config['runs']
     result_list = []
+    for data in config['data']:
+        ops = 0
+        seconds = 0
+        for _ in range(n):
+            data_copy = data.copy()
+            start = time.time()
+            ops += algorithm.sort(data_copy)
+            end = time.time()
+            seconds += end - start
+        results = save_results(config, data_copy, (ops / n), (seconds / n), result_list)
+    return results
+
+
+def save_results(config, data, count, seconds, result_list):
     # Adds operations and time
     if config['stats'] == ['ops', 'time']:
         result_list.append({'n': len(data), 'ops': count, 'time': seconds})
@@ -60,3 +37,18 @@ def save_results(config, data, count, seconds):
     if config['stats'] == 'time':
         result_list.append({'n': len(data), 'time': seconds})
     return result_list
+
+
+def determine_algorithm(config):
+    results = {}
+    for algorithm in config['algorithms']:
+        if algorithm == 'Bubble Sort':
+            bubble_result = run_algorithm(config, BubbleSort)
+            results['Bubble Sort'] = bubble_result
+        if algorithm == 'Insertion Sort':
+            insertion_result = run_algorithm(config, InsertionSort)
+            results['Insertion Sort'] = insertion_result
+        if algorithm == 'Quick Sort':
+            quick_result = run_algorithm(config, QuickSort)
+            results['Quick Sort'] = quick_result
+    return results

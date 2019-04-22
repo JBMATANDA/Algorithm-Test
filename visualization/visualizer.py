@@ -1,8 +1,7 @@
 import matplotlib
 import math
-import matplotlib.pyplot as plt
-
 matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 
 
 def plot_result(results, title):
