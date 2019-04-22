@@ -7,3 +7,4 @@ n_ops = QuickSort.sort(data)
 
 print(data)
 print("n_ops: %d" % n_ops)
+

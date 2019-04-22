@@ -24,6 +24,7 @@ def partition(a_list, first, last):
 
     left_mark = first + 1
     right_mark = last
+
     done = False
     while not done:
         while increment_count() and left_mark <= right_mark and a_list[left_mark] <= pivot_value:
@@ -31,17 +32,19 @@ def partition(a_list, first, last):
 
         while increment_count() and a_list[right_mark] >= pivot_value and right_mark >= left_mark:
             right_mark = right_mark - 1
+
         if right_mark < left_mark:
             done = True
         else:
             temp = a_list[left_mark]
             a_list[left_mark] = a_list[right_mark]
             a_list[right_mark] = temp
-        temp = a_list[first]
-        a_list[first] = a_list[right_mark]
-        a_list[right_mark] = temp
 
-        return right_mark
+    temp = a_list[first]
+    a_list[first] = a_list[right_mark]
+    a_list[right_mark] = temp
+
+    return right_mark
 
 
 def increment_count():
