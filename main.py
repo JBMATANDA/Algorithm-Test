@@ -18,8 +18,8 @@ def run_reversed_sorted_data(config):
     run_experiment(config, "Reverse Sorted")
 
 
-def run_almost_sorted_data(config):
-    config['data'] = [data_generator.generate_almost_sorted_data(n) for n in config['sizes']]
+def run_almost_sorted_data(config, swaps):
+    config['data'] = [data_generator.generate_almost_sorted_data(n, swaps) for n in config['sizes']]
     run_experiment(config, "Almost Sorted")
 
 
@@ -39,4 +39,4 @@ if __name__ == "__main__":
     run_random_data(config)
     run_sorted_data(config)
     run_reversed_sorted_data(config)
-    run_almost_sorted_data(config)
+    run_almost_sorted_data(config, 4)

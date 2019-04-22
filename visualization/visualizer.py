@@ -9,36 +9,9 @@ def plot_result(results, title):
     plt.ylabel('Ops (#)')
     plt.xlabel('Size (n)')
 
-    bubble_sort = results['Bubble Sort']
-    insertion_sort = results['Insertion Sort']
-    quick_sort = results['Quick Sort']
-
-    bubble_opsx = []
-    bubble_opsy = []
-    bubble_timey = []
-
-    for stat in bubble_sort:
-        bubble_opsx.append(stat['n'])
-        bubble_opsy.append(stat['ops'])
-        bubble_timey.append(stat['time'])
-
-    insertion_opsx = []
-    insertion_opsy = []
-    insertion_timey = []
-
-    for stat in insertion_sort:
-        insertion_opsx.append(stat['n'])
-        insertion_opsy.append(stat['ops'])
-        insertion_timey.append(stat['time'])
-
-    quick_opsx = []
-    quick_opsy = []
-    quick_timey = []
-
-    for stat in quick_sort:
-        quick_opsx.append(stat['n'])
-        quick_opsy.append(stat['ops'])
-        quick_timey.append(stat['time'])
+    bubble_opsx, bubble_opsy, bubble_timey = bubble_sort_stats(results)
+    insertion_opsx, insertion_opsy, insertion_timey = insertion_sort_stats(results)
+    quick_opsx, quick_opsy, quick_timey = quick_sort_stats(results)
 
     plt.subplot(121)
     plt.plot(bubble_opsx, bubble_opsy, label='Bubble Sort')
@@ -76,3 +49,48 @@ def quadratic(n):
 
 def linear(n):
     return n
+
+
+def bubble_sort_stats(results):
+    bubble_sort = results['Bubble Sort']
+
+    bubble_opsx = []
+    bubble_opsy = []
+    bubble_timey = []
+
+    for stat in bubble_sort:
+        bubble_opsx.append(stat['n'])
+        bubble_opsy.append(stat['ops'])
+        bubble_timey.append(stat['time'])
+
+    return bubble_opsx, bubble_opsy, bubble_timey
+
+
+def insertion_sort_stats(results):
+    insertion_sort = results['Insertion Sort']
+
+    insertion_opsx = []
+    insertion_opsy = []
+    insertion_timey = []
+
+    for stat in insertion_sort:
+        insertion_opsx.append(stat['n'])
+        insertion_opsy.append(stat['ops'])
+        insertion_timey.append(stat['time'])
+
+    return insertion_opsx, insertion_opsy, insertion_timey
+
+
+def quick_sort_stats(results):
+    quick_sort = results['Quick Sort']
+
+    quick_opsx = []
+    quick_opsy = []
+    quick_timey = []
+
+    for stat in quick_sort:
+        quick_opsx.append(stat['n'])
+        quick_opsy.append(stat['ops'])
+        quick_timey.append(stat['time'])
+
+    return quick_opsx, quick_opsy, quick_timey
